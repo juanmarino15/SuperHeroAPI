@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\2998542\\Documents\\Courses\\SuperHeroApi\\API\\API.csproj": {}
+    "C:\\Users\\2998542\\Documents\\Courses\\New folder\\api\\API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\2998542\\Documents\\Courses\\SuperHeroApi\\API\\API.csproj": {
+    "C:\\Users\\2998542\\Documents\\Courses\\New folder\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\2998542\\Documents\\Courses\\SuperHeroApi\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\2998542\\Documents\\Courses\\New folder\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\Users\\2998542\\Documents\\Courses\\SuperHeroApi\\API\\API.csproj",
+        "projectPath": "C:\\Users\\2998542\\Documents\\Courses\\New folder\\api\\API.csproj",
         "packagesPath": "C:\\Users\\2998542\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\2998542\\Documents\\Courses\\SuperHeroApi\\API\\obj\\",
+        "outputPath": "C:\\Users\\2998542\\Documents\\Courses\\New folder\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\2998542\\AppData\\Roaming\\NuGet\\NuGet.Config"
