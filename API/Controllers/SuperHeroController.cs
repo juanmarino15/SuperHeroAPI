@@ -1,35 +1,27 @@
 
 using API.Models;
+using API.Services.SuperHeroService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SuperHeroController : Controller
+    public class SuperHeroController : ControllerBase
     {
-        private static List<SuperHero> superHeroes = new List<SuperHero>{
-            new SuperHero{ 
-                Id =1, 
-                Name = "Spider Man",
-                FirstName = "Peter",
-                LastName = "Parker",
-                Place = "New York City"
-                },
-            new SuperHero{ 
-                Id =2, 
-                Name = "Iron Man",
-                FirstName = "Tony",
-                LastName = "Stark",
-                Place = "Malibu"
-                }
-        };
-
+        private readonly iSuperHeroService _superHeroService;
+       
+      public SuperHeroController(iSuperHeroService superHeroService)
+      {
+            _superHeroService = superHeroService;
+        
+      }
 //getting all heroes
        [HttpGet]
-       public async Task<ActionResult<List<SuperHero>>> GetAllHeores() 
+       public async Task<ActionResult<List<SuperHero>>> GetAllHeroes() 
        {
-        return Ok(superHeroes);
+        var result = _superHeroService.GetAllHeroes();
+        return Ok(result);
        }
 
 //getting hero by id
@@ -37,19 +29,41 @@ namespace API.Controllers
        [Route("{id}")] //get parameter by id
        public async Task<ActionResult<SuperHero>> GetSingleHeroe(int id) 
        {
-        var hero = superHeroes.Find(x => x.Id == id);
-        if(hero == null)
+        var result = _superHeroService.GetSingleHero(id);
+        if(result == null)
             return NotFound("Sorry, but this hero doesn't exist");
-        return Ok(hero);
+        return Ok(result);
        }
 
        //adding a hero 
        [HttpPost]
        public async Task<ActionResult<List<SuperHero>>> AddHero(SuperHero hero)  //of type SuperHero name hero. passed through the body
        {
-        superHeroes.Add(hero); //using the class to add a new hero
-        return Ok(superHeroes);
+            var result = _superHeroService.AddHero(hero);
+            return Ok(result);
        }
+
+
+        //update record
+        [HttpPut ("{id}")] //get parameter by id
+       public async Task<ActionResult<List<SuperHero>>> UpdateHero(int id, SuperHero request) 
+       {
+        var result = _superHeroService.UpdateHero(id, request);
+        if(result == null)
+            return NotFound("Hero not Found.");
+        return Ok(result);
+       }
+
+        //delete record
+        [HttpDelete ("{id}")] //get parameter by id
+       public async Task<ActionResult<List<SuperHero>>> DeleteHero(int id) 
+       {
+        var result = _superHeroService.DeleteHero(id);
+        if(result == null)
+            return NotFound("Hero not Found.");
+        return Ok(result);
+       }
+
 
     }
 }
