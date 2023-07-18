@@ -1,6 +1,6 @@
 namespace API.Services.SuperHeroService
 {
-    public interface iSuperHeroService
+    public interface ISuperHeroService
     {
         List<SuperHero> GetAllHeroes();
         SuperHero GetSingleHero(int id);

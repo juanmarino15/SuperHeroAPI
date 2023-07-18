@@ -1,6 +1,6 @@
 namespace API.Services.SuperHeroService
 {
-    public class SuperHeroService : iSuperHeroService
+    public class SuperHeroService : ISuperHeroService
     {
          private static List<SuperHero> superHeroes = new List<SuperHero>{
             new SuperHero{ 

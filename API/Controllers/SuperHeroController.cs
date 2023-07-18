@@ -9,9 +9,9 @@ namespace API.Controllers
     [ApiController]
     public class SuperHeroController : ControllerBase
     {
-        private readonly iSuperHeroService _superHeroService;
+        private readonly ISuperHeroService _superHeroService;
        
-      public SuperHeroController(iSuperHeroService superHeroService)
+      public SuperHeroController(ISuperHeroService superHeroService)
       {
             _superHeroService = superHeroService;
         
@@ -20,11 +20,11 @@ namespace API.Controllers
        [HttpGet]
        public async Task<ActionResult<List<SuperHero>>> GetAllHeroes() 
        {
-        var result = _superHeroService.GetAllHeroes();
-        return Ok(result);
+        return _superHeroService.GetAllHeroes();
+      
        }
 
-//getting hero by id
+        //getting hero by id
        [HttpGet] //could also do [HttpGet("{id}")]
        [Route("{id}")] //get parameter by id
        public async Task<ActionResult<SuperHero>> GetSingleHeroe(int id) 
