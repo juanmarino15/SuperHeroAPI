@@ -1,4 +1,5 @@
 global using API.Models;
+using API.Data;
 using API.Services.SuperHeroService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ISuperHeroService, SuperHeroService>(); //registering the service
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+}
+);
 
 var app = builder.Build();
 

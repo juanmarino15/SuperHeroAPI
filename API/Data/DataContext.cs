@@ -9,10 +9,6 @@ namespace API.Data
             
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-            object value = optionsBuilder.UseSqlServer("Server=myServerAddress;Port=1234;Database=myDataBase;Uid=myUsername;Pwd=myPassword;");
-        }
+        public DbSet<SuperHero> SuperHeroes {get;set;}
     }
 }
